@@ -137,6 +137,12 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
+# PyCharm/IDE ayarları
+.idea/
+
+# Sanal ortam (Virtual environment) dosyaları
+venv/
+
 # mkdocs documentation
 /site
 
