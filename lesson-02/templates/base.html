@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head
+        <meta charset="UTF-8">
+        <title>{% block title %}Default Value{% endblock %}</title>
+    </head>
+
+    <body>
+        <p>This is not inherited so this will always be here.</p>
+        {% block content %}{% endblock %}
+    </body>
+</html>
