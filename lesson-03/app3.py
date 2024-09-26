@@ -1,7 +1,7 @@
 import os
 import uuid
 import pandas as pd
-from flask import Flask, render_template, redirect, url_for, request, Response, send_from_directory
+from flask import Flask, render_template, redirect, url_for, request, Response, send_from_directory, jsonify
 
 
 app = Flask(__name__, template_folder="templates")
@@ -63,8 +63,12 @@ def download(filename):
 
 @app.route("/handle_post", methods=["POST"])
 def handle_post():
-    greeting = ""
-    return
+    greeting = request.json["greeting"]
+    name = request.json["name"]
+
+    with open("file.txt", "w") as f:
+        f.write(f"{greeting}, {name}")
+    return jsonify({"message": "Succesfuly written"})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5555, debug=True)
