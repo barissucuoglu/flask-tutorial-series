@@ -1,7 +1,7 @@
 import os
 import uuid
 import pandas as pd
-from flask import Flask, render_template, redirect, url_for, request, Response, send_from_directory, jsonify
+from flask import Flask, render_template, request, Response, send_from_directory, jsonify
 
 
 app = Flask(__name__, template_folder="templates")
