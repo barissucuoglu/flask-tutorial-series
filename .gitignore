@@ -25,6 +25,14 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+# Ignore all Bootstrap CSS and JS files
+lesson-04/static/css/bootstrap*
+lesson-04/static/js/bootstrap*
+
+# Optionally ignore .map files
+lesson-04/static/css/*.map
+lesson-04/static/js/*.map
+
 
 # Ignore Bootstrap CSS files in static/css
 static/css/bootstrap*
