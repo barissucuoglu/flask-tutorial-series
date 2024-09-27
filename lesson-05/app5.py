@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, make_response, request
 
 app = Flask(__name__, template_folder="templates")
 
@@ -28,6 +28,23 @@ def clear_session():
     session.clear()
     #session.pop("name")
     return render_template("index.html", message="Session Cleared")
+
+@app.route("/set_cookie")
+def set_cookie():
+    response = make_response(render_template("index.html", message="Cookie set."))
+    response.set_cookie("cookie_name", "cookie_value")
+    return response
+
+@app.route("/get_cookie")
+def get_cookie():
+    cookie_value = request.cookies.get("cookie_name")
+    return render_template("index.html", message=f"Cookie Value: {cookie_value}")
+
+@app.route("/remove_cookie")
+def remove_cookie():
+    response = make_response(render_template("index.html", message="Cookie Removed."))
+    response.set_cookie("cookie_name", expires=0)
+    return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5555, debug=True)
