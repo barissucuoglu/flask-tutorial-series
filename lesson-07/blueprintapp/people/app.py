@@ -11,14 +11,9 @@ def create_app():
     db.init_app(app=app)
 
     # import and register all blueprints
-    from blueprintapp.core.routes import core
     from blueprintapp.todos.routes import todos
-    from blueprintapp.people.routes import people
 
-    app.register_blueprint(core, url_prefix="/")
     app.register_blueprint(todos, url_prefix="/todos")
-    app.register_blueprint(people, url_prefix="/people")
-
     migrate = Migrate(app, db)
 
     return app
